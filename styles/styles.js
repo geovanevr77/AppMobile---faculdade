@@ -18,6 +18,8 @@ export default StyleSheet.create({
     textShadowColor: '#B0E0E6',
     textShadowOffset: { width: 2, height: 2 },
     textShadowRadius: 5,
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
   },
   itemsContainer: {
     flexGrow: 1,
@@ -67,5 +69,11 @@ export default StyleSheet.create({
     color: '#fff',
     textAlign: 'center',
     fontWeight: 'bold',
+  },
+  errorMessage: {
+    color: 'red',
+    fontSize: 16,
+    textAlign: 'center',
+    marginBottom: 10,
   },
 });
