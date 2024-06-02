@@ -8,12 +8,25 @@ export default StyleSheet.create({
     padding: 20,
     backgroundColor: '#F5FCFF',
   },
+  titleContainer: {
+    position: 'absolute',
+    top: 40,
+    left: 0,
+    right: 0,
+    alignItems: 'center',
+  },
+  topTitle: {
+    fontSize: 36, // Ajuste para um tamanho maior, mas não excessivo
+    fontWeight: 'bold',
+    color: '#1976D2',
+    textTransform: 'uppercase',
+  },
   header: {
     fontSize: 24,
     marginBottom: 20,
     fontWeight: 'bold',
     color: '#1976D2',
-    textTransform: 'uppercase', // Convertendo para maiúsculas
+    textTransform: 'uppercase',
   },
   input: {
     width: '100%',
@@ -39,5 +52,16 @@ export default StyleSheet.create({
     color: '#fff',
     fontSize: 18,
     fontWeight: 'bold',
+  },
+  errorMessage: {
+    color: 'red',
+    fontSize: 16,
+    textAlign: 'center',
+    marginBottom: 10,
+  },
+  orText: {
+    marginVertical: 10,
+    fontSize: 18,
+    color: '#000',
   },
 });

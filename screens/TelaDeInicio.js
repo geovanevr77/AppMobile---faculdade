@@ -12,7 +12,6 @@ export default function TelaDeInicio({ navigation }) {
 
   useFocusEffect(
     React.useCallback(() => {
-      // Limpar os campos sempre que a tela for exibida
       setNome('');
       setContato('');
       setSenha('');
@@ -27,56 +26,55 @@ export default function TelaDeInicio({ navigation }) {
       return;
     }
 
-    // Verifica se o nome tem pelo menos 8 caracteres
     if (nome.length < 8) {
       setErrorMessage('O nome deve ter no mínimo 8 caracteres.');
       return;
     }
 
-    // Verifica se o número de contato é um número de celular válido
-    const celularRegex = /^\d{2}\d{5}\d{4}$/; // Formato esperado: DD9XXXXYYYY
+    const celularRegex = /^\d{2}\d{5}\d{4}$/;
     if (!celularRegex.test(contato)) {
       setErrorMessage('Número de celular inválido. Use o formato: DD9XXXXYYYY.');
       return;
     }
 
-    // Verifica se a senha é um número
     if (isNaN(parseInt(senha))) {
       setErrorMessage('A senha deve ser um número.');
       return;
     }
 
-    // Verifica se a senha está dentro do intervalo de 1 a 100
     const senhaNumerica = parseInt(senha);
     if (senhaNumerica < 1 || senhaNumerica > 100) {
       setErrorMessage('A senha deve ser um número de 1 a 100.');
       return;
     }
 
-    // Verifica se o nome do funcionário tem pelo menos 5 caracteres
     if (funcionario.length < 5) {
       setErrorMessage('O nome do funcionário deve ter no mínimo 5 caracteres.');
       return;
     }
 
-    // Adicione lógica para processar os dados aqui
     console.log('Nome do Cliente:', nome);
     console.log('Contato:', contato);
     console.log('Senha:', senha);
     console.log('Nome do Funcionário:', funcionario);
 
-    // Resetar os campos
     setNome('');
     setContato('');
     setSenha('');
     setFuncionario('');
 
-    // Navegar para a tela de checklist
     navigation.navigate('ChecklistScreen');
+  };
+
+  const handleHistorico = () => {
+    navigation.navigate('HistoricoDeAtendimentoScreen');
   };
 
   return (
     <View style={telaDeInicioStyles.container}>
+      <View style={telaDeInicioStyles.titleContainer}>
+        <Text style={telaDeInicioStyles.topTitle}>Lavanderia Laundry Express</Text>
+      </View>
       <Text style={telaDeInicioStyles.header}>Informações do Cliente</Text>
       <TextInput
         style={telaDeInicioStyles.input}
@@ -110,6 +108,13 @@ export default function TelaDeInicio({ navigation }) {
         onPress={handleSubmit}
       >
         <Text style={telaDeInicioStyles.buttonText}>Prosseguir</Text>
+      </TouchableOpacity>
+      <Text style={telaDeInicioStyles.orText}>OU</Text>
+      <TouchableOpacity
+        style={telaDeInicioStyles.button}
+        onPress={handleHistorico}
+      >
+        <Text style={telaDeInicioStyles.buttonText}>Histórico de Atendimentos</Text>
       </TouchableOpacity>
     </View>
   );
