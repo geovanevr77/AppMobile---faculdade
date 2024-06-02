@@ -3,7 +3,9 @@ import { View, Text, ScrollView, TouchableOpacity, Animated, Easing } from 'reac
 import ChecklistItem from '../components/ChecklistItem';
 import styles from '../styles/styles';
 
-export default function ChecklistScreen({ navigation }) {
+export default function ChecklistScreen({ route, navigation }) {
+  const { dadosCliente } = route.params;
+
   const [items, setItems] = useState([
     { id: 1, name: 'Recepção de Peças', checked: false },
     { id: 2, name: 'Separação por Tipo de Tecido', checked: false },
@@ -34,6 +36,8 @@ export default function ChecklistScreen({ navigation }) {
 
     console.log('Check-list enviado:', items.filter(item => item.checked));
     setIsChecklistSent(true);
+
+    navigation.navigate('HistoricoDeAtendimentoScreen', { dadosCliente: dadosCliente });
   };
 
   const handleButtonClick = () => {

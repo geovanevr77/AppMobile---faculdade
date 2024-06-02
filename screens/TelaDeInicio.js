@@ -63,7 +63,9 @@ export default function TelaDeInicio({ navigation }) {
     setSenha('');
     setFuncionario('');
 
-    navigation.navigate('ChecklistScreen');
+    navigation.navigate('ChecklistScreen', {
+      dadosCliente: { nome, contato, senha, funcionario },
+    });
   };
 
   const handleHistorico = () => {
