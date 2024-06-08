@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import TelaDeInicio from './screens/TelaDeInicio';
 import ChecklistScreen from './screens/ChecklistScreen';
 import HistoricoAtendimentosScreen from './screens/HistoricoDeAtendimentosScreen';
+import firebase from './src/firebaseConnection';
 
 const Stack = createStackNavigator();
 
