@@ -1,5 +1,5 @@
 Nome do Seu Projeto
-Descrição curta do seu projeto.
+App Laundry Express.
 
 Pré-requisitos
 Antes de começar, verifique se você atende aos seguintes requisitos:
