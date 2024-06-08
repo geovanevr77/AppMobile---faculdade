@@ -16,6 +16,22 @@ export default StyleSheet.create({
     textTransform: 'uppercase',
     textAlign: 'center',
   },
+  input: {
+    width: '100%',
+    height: 40,
+    borderColor: '#ccc',
+    borderWidth: 1,
+    marginBottom: 10,
+    borderRadius: 5,
+    paddingHorizontal: 10,
+  },
+  orderContainer: {
+    width: '100%',
+    backgroundColor: '#E3F2FD', // Fundo azul claro
+    padding: 15,
+    borderRadius: 10,
+    marginBottom: 10,
+  },
   infoContainer: {
     width: '100%',
     alignItems: 'flex-start',

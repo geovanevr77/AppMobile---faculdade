@@ -53,10 +53,13 @@ export default function TelaDeInicio({ navigation }) {
       return;
     }
 
+    const dateTime = new Date().toLocaleString();
+
     console.log('Nome do Cliente:', nome);
     console.log('Contato:', contato);
     console.log('Senha:', senha);
     console.log('Nome do Funcionário:', funcionario);
+    console.log('Data e Hora:', dateTime);
 
     setNome('');
     setContato('');
@@ -64,7 +67,7 @@ export default function TelaDeInicio({ navigation }) {
     setFuncionario('');
 
     navigation.navigate('ChecklistScreen', {
-      dadosCliente: { nome, contato, senha, funcionario },
+      dadosCliente: { nome, contato, senha, funcionario, dateTime },
     });
   };
 
