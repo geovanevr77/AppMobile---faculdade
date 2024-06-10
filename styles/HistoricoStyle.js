@@ -6,9 +6,9 @@ export default StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
     padding: 20,
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#F5FCFF', // Mantém o fundo original do aplicativo
   },
-  topTitle: {
+  header: {
     fontSize: 24,
     marginBottom: 20,
     fontWeight: 'bold',
@@ -25,31 +25,15 @@ export default StyleSheet.create({
     borderRadius: 5,
     paddingHorizontal: 10,
   },
-  orderContainer: {
+  itemContainer: {
     width: '100%',
-    backgroundColor: '#E3F2FD', // Fundo azul claro
+    backgroundColor: '#E3F2FD', // Fundo azul para os itens
     padding: 15,
     borderRadius: 10,
-    marginBottom: 10,
+    marginBottom: 10, // Espaço entre os itens
   },
-  infoContainer: {
-    width: '100%',
-    alignItems: 'flex-start',
-    marginBottom: 10,
-  },
-  label: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#1976D2',
-  },
-  value: {
-    fontSize: 18,
-    color: '#333',
-  },
-  errorText: {
-    color: 'red',
+  itemText: {
     fontSize: 16,
-    textAlign: 'center',
-    marginTop: 20,
+    color: '#333',
   },
 });

@@ -55,6 +55,8 @@ export default function TelaDeInicio({ navigation }) {
 
     const dateTime = new Date().toLocaleString();
 
+    const dadosCliente = { nome, contato, senha, funcionario, dateTime };
+
     console.log('Nome do Cliente:', nome);
     console.log('Contato:', contato);
     console.log('Senha:', senha);
@@ -66,9 +68,7 @@ export default function TelaDeInicio({ navigation }) {
     setSenha('');
     setFuncionario('');
 
-    navigation.navigate('ChecklistScreen', {
-      dadosCliente: { nome, contato, senha, funcionario, dateTime },
-    });
+    navigation.navigate('ChecklistScreen', { dadosCliente });
   };
 
   const handleHistorico = () => {

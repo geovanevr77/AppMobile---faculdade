@@ -1,58 +1,64 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, FlatList } from 'react-native';
-import telaDeInicioStyles from '../styles/HistoricoStyle';
+import historicoStyles from '../styles/HistoricoStyle';
 
 export default function HistoricoAtendimentosScreen({ route }) {
-  const [historico, setHistorico] = useState([]);
-  const [filtro, setFiltro] = useState('');
+  const dadosSimulados = [
+    { nome: 'João Silva', contato: '11987654321', senha: '12', funcionario: 'Pedro', dateTime: '01/01/2024 10:00' },
+    { nome: 'Maria Oliveira', contato: '11987654322', senha: '23', funcionario: 'Ana', dateTime: '02/01/2024 11:00' },
+    { nome: 'Carlos Souza', contato: '11987654323', senha: '34', funcionario: 'Lucas', dateTime: '03/01/2024 12:00' }
+  ];
+
+  const [historico, setHistorico] = useState(dadosSimulados);
+  const [busca, setBusca] = useState('');
+  const [atendimentosFiltrados, setAtendimentosFiltrados] = useState(dadosSimulados);
+  const dadosCliente = route.params?.dadosCliente;
 
   useEffect(() => {
-    const pedidosSimulados = gerarPedidosSimulados();
-    setHistorico(pedidosSimulados);
-  }, []);
+    if (dadosCliente) {
+      setHistorico(prevHistorico => [...prevHistorico, dadosCliente]);
+    }
+  }, [dadosCliente]);
 
-  const gerarPedidosSimulados = () => {
-    const dataAtual = new Date().toLocaleString();
-    const dataOntem = new Date(Date.now() - 86400000).toLocaleString(); // Data de ontem
-    return [
-      { id: 1, nome: 'João', contato: '999999999', senha: '12', funcionario: 'Maria', dateTime: dataAtual },
-      { id: 2, nome: 'Maria', contato: '888888888', senha: '56', funcionario: 'Pedro', dateTime: dataAtual },
-      { id: 3, nome: 'José', contato: '777777777', senha: '90', funcionario: 'Ana', dateTime: dataOntem },
-      { id: 4, nome: 'Ana', contato: '666666666', senha: '34', funcionario: 'Lucas', dateTime: dataOntem },
-      { id: 5, nome: 'Pedro', contato: '555555555', senha: '78', funcionario: 'Julia', dateTime: dataAtual },
-    ];
-  };
+  useEffect(() => {
+    if (busca === '') {
+      setAtendimentosFiltrados(historico);
+    } else {
+      const historicoFiltrado = historico.filter(atendimento => {
+        const termoBusca = busca.toLowerCase();
+        return (
+          atendimento.nome.toLowerCase().includes(termoBusca) ||
+          atendimento.senha.includes(termoBusca) ||
+          atendimento.dateTime.includes(termoBusca)
+        );
+      });
+      setAtendimentosFiltrados(historicoFiltrado);
+    }
+  }, [busca, historico]);
 
-  const historicoFiltrado = historico.filter(item => 
-    item.nome.includes(filtro) || item.dateTime.includes(filtro) || item.senha.includes(filtro)
+  const renderItem = ({ item }) => (
+    <View style={historicoStyles.itemContainer}>
+      <Text style={historicoStyles.itemText}>Nome: {item.nome}</Text>
+      <Text style={historicoStyles.itemText}>Contato: {item.contato}</Text>
+      <Text style={historicoStyles.itemText}>Senha: {item.senha}</Text>
+      <Text style={historicoStyles.itemText}>Funcionário: {item.funcionario}</Text>
+      <Text style={historicoStyles.itemText}>Data e Hora: {item.dateTime}</Text>
+    </View>
   );
 
   return (
-    <View style={telaDeInicioStyles.container}>
-      <Text style={telaDeInicioStyles.topTitle}>Histórico de Atendimento</Text>
+    <View style={historicoStyles.container}>
+      <Text style={historicoStyles.header}>Histórico de Atendimentos</Text>
       <TextInput
-        style={telaDeInicioStyles.input}
-        placeholder="Filtrar por nome, senha ou data"
-        value={filtro}
-        onChangeText={setFiltro}
+        style={historicoStyles.input}
+        placeholder="Buscar por nome, senha ou data"
+        value={busca}
+        onChangeText={setBusca}
       />
       <FlatList
-        data={historicoFiltrado}
-        keyExtractor={item => item.id.toString()}
-        renderItem={({ item }) => (
-          <View style={telaDeInicioStyles.orderContainer}>
-            <Text style={telaDeInicioStyles.label}>Nome:</Text>
-            <Text style={telaDeInicioStyles.value}>{`${item.nome} (ID: ${item.id})`}</Text>
-            <Text style={telaDeInicioStyles.label}>Data e Hora:</Text>
-            <Text style={telaDeInicioStyles.value}>{item.dateTime}</Text>
-            <Text style={telaDeInicioStyles.label}>Contato:</Text>
-            <Text style={telaDeInicioStyles.value}>{item.contato}</Text>
-            <Text style={telaDeInicioStyles.label}>Senha:</Text>
-            <Text style={telaDeInicioStyles.value}>{item.senha}</Text>
-            <Text style={telaDeInicioStyles.label}>Funcionário:</Text>
-            <Text style={telaDeInicioStyles.value}>{item.funcionario}</Text>
-          </View>
-        )}
+        data={atendimentosFiltrados}
+        renderItem={renderItem}
+        keyExtractor={(item, index) => index.toString()}
       />
     </View>
   );

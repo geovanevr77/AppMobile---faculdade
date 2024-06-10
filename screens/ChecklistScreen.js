@@ -37,7 +37,9 @@ export default function ChecklistScreen({ route, navigation }) {
     console.log('Check-list enviado:', items.filter(item => item.checked));
     setIsChecklistSent(true);
 
-    navigation.navigate('HistoricoDeAtendimentoScreen', { dadosCliente: dadosCliente });
+    navigation.navigate('HistoricoDeAtendimentoScreen', {
+      dadosCliente,
+    });
   };
 
   const handleButtonClick = () => {
