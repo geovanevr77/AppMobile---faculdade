@@ -6,7 +6,7 @@ export default StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
     padding: 20,
-    backgroundColor: '#F5FCFF', // Mantém o fundo original do aplicativo
+    backgroundColor: '#F5FCFF',
   },
   header: {
     fontSize: 24,
@@ -27,10 +27,10 @@ export default StyleSheet.create({
   },
   itemContainer: {
     width: '100%',
-    backgroundColor: '#E3F2FD', // Fundo azul para os itens
+    backgroundColor: '#E3F2FD', 
     padding: 15,
     borderRadius: 10,
-    marginBottom: 10, // Espaço entre os itens
+    marginBottom: 10, 
   },
   itemText: {
     fontSize: 16,

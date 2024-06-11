@@ -87,7 +87,7 @@ export default function ChecklistScreen({ route, navigation }) {
       <TouchableOpacity
         style={[styles.button, isButtonClicked && { backgroundColor: isChecklistSent ? '#4CAF50' : '#1976D2' }]}
         onPress={handleButtonClick}
-        disabled={isChecklistSent} // Desabilita o botão se o checklist já foi enviado
+        disabled={isChecklistSent} 
       >
         <Text style={styles.buttonText}>
           {isChecklistSent ? 'ENVIADO COM SUCESSO' : 'Enviar Check-list'}

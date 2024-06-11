@@ -16,7 +16,7 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   topTitle: {
-    fontSize: 36, // Ajuste para um tamanho maior, mas não excessivo
+    fontSize: 36,
     fontWeight: 'bold',
     color: '#1976D2',
     textTransform: 'uppercase',
